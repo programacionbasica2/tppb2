@@ -10,7 +10,7 @@ public class Restaurante {
 	
 	
 	public Boolean registroUsuario(String nombre, String apellido, String mail, String contrasena) throws Exception {
-		Usuario usuario =new Usuario("","","","");
+		Usuario usuario =new Usuario("","","a","");
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
 		for(Usuario daux: listaUsuarios) {
@@ -43,5 +43,19 @@ public class Restaurante {
 		}
 	return -1;
 	}
+	
+	
+	
+	public void agregarproducto(Producto producto)
+	
+	{
+		
+		listaProductos.add(producto);		
+		
+	}
+
+	public void Buscarproducto(){}
+	
+
 	
 }
