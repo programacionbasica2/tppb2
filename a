@@ -1,0 +1,53 @@
+[33mcommit 0c9b2d9a75778ae33598115b56edccd767fca9b9[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: juan sebastian rugna <juanrugna@hotmail.com>
+Date:   Tue Nov 19 21:27:08 2019 -0300
+
+    Se actualizo Restaurante
+
+[33mcommit 3f1fbd70c7954be61e8b2c88cce91de8e269e774[m
+Author: juanc <juanc@DESKTOP-0V9KVCE>
+Date:   Tue Nov 19 21:12:11 2019 -0300
+
+    Se actualizo la clase Restaurante
+
+[33mcommit d68cf25618721d05d6fd6befdeb8cc48e55068b5[m
+Author: JuanRugna <55444429+JuanRugna@users.noreply.github.com>
+Date:   Tue Nov 19 20:08:46 2019 -0300
+
+    Update Pedido.java
+
+[33mcommit f9b813bef1d7c906b746fd37090e54e1ebd242d1[m
+Author: JuanRugna <55444429+JuanRugna@users.noreply.github.com>
+Date:   Tue Nov 19 20:06:02 2019 -0300
+
+    Rename Pedido to Pedido.java
+
+[33mcommit 68efb0bdf5ec25dc47a037e2cfcc33b5edbcdc6e[m
+Author: JuanRugna <55444429+JuanRugna@users.noreply.github.com>
+Date:   Tue Nov 19 20:05:07 2019 -0300
+
+    Create Pedido
+
+[33mcommit 7a40aba018eb9e9e8fbca10ad210fb79d33d54ce[m
+Author: JuanRugna <55444429+JuanRugna@users.noreply.github.com>
+Date:   Tue Nov 19 20:04:53 2019 -0300
+
+    Create Restaurante.java
+
+[33mcommit 780d61dc8a313cb70aa9b62c3a6e6c81ea968478[m
+Author: JuanRugna <55444429+JuanRugna@users.noreply.github.com>
+Date:   Tue Nov 19 19:53:47 2019 -0300
+
+    Update Usuario.java
+
+[33mcommit 7943f7ca8219de84dddd43bcda503f006bfdb191[m
+Author: axel <axelabalos@hotmail.com>
+Date:   Tue Nov 19 17:34:35 2019 -0300
+
+    se agrego la clase producto
+
+[33mcommit 2e2588321f0939c13dd71af44dc555655a8ae15d[m
+Author: axel <axelabalos@hotmail.com>
+Date:   Sun Nov 17 10:56:21 2019 -0300
+
+    Iniciamos repositorio
