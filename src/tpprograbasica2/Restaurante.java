@@ -9,7 +9,11 @@ public class Restaurante {
 	HashSet<Admin> listaAdmins = new HashSet<Admin>();
 
 	public Boolean registroUsuario(String nombre, String apellido, String mail, String contrasena) throws Exception {
+<<<<<<< HEAD
 		Usuario usuario = new Usuario("", "", "", "");
+=======
+		Usuario usuario =new Usuario("","","a","");
+>>>>>>> 71fff00dc68785af1479841b8120ab66292380d3
 		usuario.setNombre(nombre);
 		usuario.setApellido(apellido);
 		for (Usuario daux : listaUsuarios) {
@@ -40,4 +44,22 @@ public class Restaurante {
 		}
 	return resultado;
 	}
+<<<<<<< HEAD
+=======
+	
+	
+	
+	public void agregarproducto(Producto producto)
+	
+	{
+		
+		listaProductos.add(producto);		
+		
+	}
+
+	public void Buscarproducto(){}
+	
+
+	
+>>>>>>> 71fff00dc68785af1479841b8120ab66292380d3
 }
