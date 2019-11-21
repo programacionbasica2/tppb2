@@ -2,11 +2,17 @@ package tpprograbasica2;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Restaurante {
-	ArrayList<Producto> listaProductos = new ArrayList<Producto>(); // Listas
-	HashSet<Usuario> listaUsuarios = new HashSet<Usuario>();
-	HashSet<Admin> listaAdmins = new HashSet<Admin>();
+	ArrayList <Producto> listaProductos = new ArrayList <Producto>(); //Listas
+	ArrayList <Producto> pedidoproductos = new ArrayList <Producto>();
+	HashSet <Usuario> listaUsuarios = new HashSet <Usuario>();
+	HashSet <Admin> listaAdmins = new HashSet <Admin>();
+	Set <Pedido> listapedidos = new TreeSet<Pedido>();
+	Set <Pedido> listadepedidosasignados = new TreeSet<Pedido>();
+	
 
 	public Boolean registroUsuario(String nombre, String apellido, String mail, String contrasena) throws Exception {
 
@@ -46,17 +52,21 @@ public class Restaurante {
 
 	
 	
-	public void agregarproducto(Producto producto)
-	
+	public void generarnumeropedido(Pedido pedido)
 	{
-		
-		listaProductos.add(producto);		
+		listapedidos.add(pedido);	
 		
 	}
-
-	public void Buscarproducto(){}
 	
-
 	
-
+	public void pedirproducto(Producto ped)
+	{
+		for(Producto daux:listaProductos){
+			if(daux.getId()==ped.getId())
+	{
+			pedidoproductos.add(ped);
+		
+	}
+}
+}
 }
