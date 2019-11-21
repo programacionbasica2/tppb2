@@ -13,7 +13,7 @@ public class Main {
 		Scanner teclado = new Scanner(System.in);
 		UnlamResto.listaUsuarios.add(test1);
 		UnlamResto.listaAdmins.add(test2);
-		 Integer opcionlogin;
+		 Integer opcionlogin=0;
 
 		System.out.println("Seleccione 1 para ingresar en el sistema");
 		System.out.println("Seleccione 2 para registrarse en el sistema");
@@ -32,6 +32,18 @@ public class Main {
 				e1.printStackTrace();
 			}
 			
+			
+			switch (opcionlogin) {
+			case 1:
+				System.out.println("Bienvenido usuario");
+				break;
+
+			case 2:
+				System.out.println("Bienvenido admin");
+				break;
+			default:
+				break;
+			}
 				
 			
 			
