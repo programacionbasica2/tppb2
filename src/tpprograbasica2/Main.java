@@ -1,5 +1,6 @@
 package tpprograbasica2;
 
+import java.lang.invoke.SwitchPoint;
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +12,8 @@ public class Main {
 		Admin test2 = new Admin("Roman", "Riquelme", "romanriquelme@hotmail.com", "asd");
 		Scanner teclado = new Scanner(System.in);
 		UnlamResto.listaUsuarios.add(test1);
+		UnlamResto.listaAdmins.add(test2);
+		 Integer opcionlogin;
 
 		System.out.println("Seleccione 1 para ingresar en el sistema");
 		System.out.println("Seleccione 2 para registrarse en el sistema");
@@ -21,13 +24,17 @@ public class Main {
 			String mail = teclado.next();
 			System.out.println("Ingrese la contraseña");
 			String contrasena = teclado.next();
+			
 			try {
-				UnlamResto.ingresarAlSistema(mail, contrasena);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				opcionlogin= UnlamResto.ingresarAlSistema(mail, contrasena);
+			} catch (DatosInvalidos e1) {
+				// TODO Auto-generated catch1 block
+				e1.printStackTrace();
 			}
-
+			
+				
+			
+			
 			break;
 
 		case 2:  //Registro
@@ -45,11 +52,15 @@ public class Main {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				
 			}
+			break;
 
 		default:
 			break;
 		}
+	
 	}
 
+	
 }
