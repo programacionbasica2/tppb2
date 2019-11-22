@@ -27,6 +27,11 @@ public Double getPrecio() {
 	return precio;
 }
 
+@Override
+public String toString() {
+	return "Producto [descripcion=" + descripcion + ", precio=" + precio + ", id=" + id + "]";
+}
+
 public void setPrecio(Double precio) {
 	this.precio = precio;
 }

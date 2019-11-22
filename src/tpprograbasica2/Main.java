@@ -11,8 +11,8 @@ public class Main {
 		Usuario test1 = new Usuario("Juan", "Rugna", "juanrugna@hotmail.com", "asd");
 		Admin test2 = new Admin("Roman", "Riquelme", "romanriquelme@hotmail.com", "asd");
 		Pedido pedido1 = new Pedido(1, 1);
-		Pedido pedido2 = new Pedido(3, 3);
-		Pedido pedido3 = new Pedido(4, 4);
+		Pedido pedido2 = new Pedido(2, 2);
+		Pedido pedido3 = new Pedido(3, 3);
 		Producto cocacola = new Producto ("Coca-Cola", 1, 30.0);
 		Producto pepsi = new Producto ("Pepsi", 2, 20.0);
 		Scanner teclado = new Scanner(System.in);
@@ -23,7 +23,9 @@ public class Main {
 		UnlamResto.listaUsuarios.add(test1);
 		UnlamResto.listaAdmins.add(test2);
 		UnlamResto.listaProductos.add(cocacola);
+		UnlamResto.listaProductos.add(pepsi);
 		Integer opcionlogin = 0;
+		Boolean opcionAdminVolverMenu = true;
 
 		System.out.println("Seleccione 1 para ingresar en el sistema");
 		System.out.println("Seleccione 2 para registrarse en el sistema");
@@ -76,12 +78,13 @@ public class Main {
 				break;
 
 			case 2: 						// **Menu admin//
-				
+				do {
 				System.out.println("Bienvenido admin");
-				System.out.println("Seleccione 0 para desconectarse");
 				System.out.println("Seleccione 1 para agregar un producto a la carta");
 				System.out.println("Seleccione 2 para eliminar un producto de la carta");
 				System.out.println("Seleccione 3 para ver el historial de pedidos");
+				System.out.println("Seleccione 4 para completar un pedido");
+				System.out.println("Seleccione 0 para desconectarse");
 				Integer opcionAdmin = teclado.nextInt();
 				switch (opcionAdmin) {
 				case 1:
@@ -94,6 +97,11 @@ public class Main {
 					try {
 						UnlamResto.agregarProducto(descripcion, id, precio);
 						System.out.println("Producto agregado correctamente");
+						System.out.println("Desea regresar al menu? 1-Sí 2-No");
+						Integer opcionRegresarMenu=teclado.nextInt();
+						if(opcionRegresarMenu==2) {
+							opcionAdminVolverMenu=false;
+						}
 						
 						
 					} catch (IdEnUso e1) {
@@ -102,28 +110,70 @@ public class Main {
 						System.out.println("Ingrese otro ID");
 						Integer id2=teclado.nextInt();
 						UnlamResto.agregarProducto(descripcion, id2, precio);
+						System.out.println("Desea regresar al menu? 1-Sí 2-No");
+						Integer opcionRegresarMenu=teclado.nextInt();
+						if(opcionRegresarMenu==2) {
+							opcionAdminVolverMenu=false;
+						}
 					}
 					break;
 				case 2:
+					for(Producto daux:UnlamResto.listaProductos) {
+							System.out.println(daux.toString());
+					}
 					System.out.println("Ingrese la ID del producto que desea eliminar de la carta");
 					Integer idEliminar= teclado.nextInt();
 					try {
 						UnlamResto.eliminarProducto(idEliminar);
 						System.out.println("El producto ha sido eliminado correctamente");
+						System.out.println("Desea regresar al menu? 1-Sí 2-No");
+						Integer opcionRegresarMenu=teclado.nextInt();
+						if(opcionRegresarMenu==2) {
+							opcionAdminVolverMenu=false;
+						}
 					} catch (IdNoEncontrado e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						System.out.println("Desea regresar al menu? 1-Sí 2-No");
+						Integer opcionRegresarMenu=teclado.nextInt();
+						if(opcionRegresarMenu==2) {
+							opcionAdminVolverMenu=false;
+						}
 					}
 					break;
 				case 3:
 					System.out.println("El historial de pedidos es:");
-					UnlamResto.mostarHistorialPedidos();
+					UnlamResto.mostrarHistorialPedidos();
+					System.out.println("Desea regresar al menu? 1-Sí 2-No");
+					Integer opcionRegresarMenu=teclado.nextInt();
+					if(opcionRegresarMenu==2) {
+						opcionAdminVolverMenu=false;
+					}
+					break;
+				case 4:
+					System.out.println("Los pedidos en curso son: ");
+					for(Pedido daux: UnlamResto.listapedidosasignados)
+					System.out.println(daux.toString());
+					System.out.println("Ingrese el numero de orden del pedido completado");
+					Integer pedidoCompletado=teclado.nextInt();
+					try {
+						UnlamResto.completarPedido(pedidoCompletado);
+						System.out.println("Pedido quitado de la lista con exito");
+						System.out.println("Desea regresar al menu? 1-Sí 2-No");
+						Integer opcionRegresarMenu1=teclado.nextInt();
+						if(opcionRegresarMenu1==2) {
+							opcionAdminVolverMenu=false;
+						}
+					} catch (NumeroOrdenNoEncontrado e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					break;
 				
 				default:
 					break;
 				}
-				while (opcionAdmin!= 0)
+				}while (opcionAdminVolverMenu)
 					;
 				break;
 			default:

@@ -11,7 +11,7 @@ public class Restaurante {
 	ArrayList<Producto> pedidoproductos = new ArrayList<Producto>();
 	HashSet<Usuario> listaUsuarios = new HashSet<Usuario>();
 	HashSet<Admin> listaAdmins = new HashSet<Admin>();
-	Set<Pedido> listapedidos = new TreeSet<Pedido>();
+	ArrayList<Pedido> listapedidos = new ArrayList<Pedido>();
 	Set<Pedido> listapedidosasignados = new TreeSet<Pedido>();
 	private Integer contadorOrdenes = 0;
 	private Integer resultado;
@@ -30,11 +30,12 @@ public class Restaurante {
 			}
 		}
 		usuario.setContrasena(contrasena);
+		listaUsuarios.add(usuario);
 		return true;
 	}
 
 	public Integer ingresarAlSistema(String mail, String contrasena) throws DatosInvalidos {
-		 resultado = -1;
+		resultado = -1;
 		for (Usuario daux : listaUsuarios) {
 			if (daux.getMail().equals(mail) && daux.getContrasena().equals(contrasena)) {
 				resultado = 1;
@@ -50,32 +51,32 @@ public class Restaurante {
 		}
 		return resultado;
 	}
-	
+
 	public void agregarProducto(String descripcion, Integer id, Double precio) throws IdEnUso {
-		Boolean idDisponible=true;
-		for(Producto daux: listaProductos) {
-			if(id == daux.getId()) {
-				idDisponible=false;
+		Boolean idDisponible = true;
+		for (Producto daux : listaProductos) {
+			if (id == daux.getId()) {
+				idDisponible = false;
 			}
 		}
-		if(idDisponible) {
-		Producto producto= new Producto (descripcion, id, precio);
-		listaProductos.add(producto);
-		}else {
+		if (idDisponible) {
+			Producto producto = new Producto(descripcion, id, precio);
+			listaProductos.add(producto);
+		} else {
 			throw new IdEnUso();
 		}
-		
+
 	}
-	
-	public void eliminarProducto(Integer id)throws IdNoEncontrado {
-		Iterator <Producto> itr= listaProductos.iterator();
-		Boolean idLibre= true;
-		while(itr.hasNext() && idLibre) {
-		Producto aux=itr.next();
-			if(id==aux.getId()) {
+
+	public void eliminarProducto(Integer id) throws IdNoEncontrado {
+		Iterator<Producto> itr = listaProductos.iterator();
+		Boolean idLibre = true;
+		while (itr.hasNext() && idLibre) {
+			Producto aux = itr.next();
+			if (id == aux.getId()) {
 				listaProductos.remove(aux);
-				idLibre=false;
-			}else {
+				idLibre = false;
+			} else {
 				throw new IdNoEncontrado();
 			}
 		}
@@ -84,29 +85,26 @@ public class Restaurante {
 	public void generarnumeropedido(Pedido pedido) {
 //genera numeros de pedido para despues poder brindar una mesa al cliente 
 
-
 		listapedidos.add(pedido);
 
-
 	}
-	public void asignarmesausuario(Integer ped)
-	{//le asigna su mesa para posteriormente
-		//solicitar el pedido
 
-		for(Pedido daux: listapedidos)
-	{
-		if(daux.getnMesa()==ped)
-		{
-			
-			listapedidosasignados.add(daux);//movi lo de generar nro de pedido a este metodo
-			daux.setnOrden(contadorOrdenes);
-			contadorOrdenes++;
-			
-			
-		}}}
+	public void asignarmesausuario(Integer ped) {// le asigna su mesa para posteriormente
+													// solicitar el pedido
+
+		for (Pedido daux : listapedidos) {
+			if (daux.getnMesa() == ped) {
+
+				listapedidosasignados.add(daux);// movi lo de generar nro de pedido a este metodo
+				daux.setnOrden(contadorOrdenes);
+				contadorOrdenes++;
+
+			}
+		}
+	}
 
 	public void pedirproducto(Producto ped) {
-		//recorre la lista de productos disponible para luego solicitar el producto
+		// recorre la lista de productos disponible para luego solicitar el producto
 		for (Producto daux : listaProductos) {
 			if (daux.getId() == ped.getId()) {
 				pedidoproductos.add(ped);
@@ -115,9 +113,9 @@ public class Restaurante {
 		}
 	}
 
-	public void mostarHistorialPedidos() {//muestra los pedidos que fueron procesados
-		for (Pedido daux : listapedidosasignados) {
-			 System.out.println(daux);
+	public void mostrarHistorialPedidos() {// muestra los pedidos que fueron procesados
+		for (Pedido daux : listapedidos) {
+			System.out.println(daux.getnMesa() + " - " + daux.getnOrden());
 		}
 	}
 
@@ -145,35 +143,42 @@ public class Restaurante {
 			return sumatoriaTarjeta;
 		}
 	}
-	
-	public void mostrarCarta () {//muestra la carta de productos disponibles
-		for(Producto aux: listaProductos) {
-			System.out.println(aux.getId()+aux.getDescripcion()+aux.getPrecio());
+
+	public void mostrarCarta() {// muestra la carta de productos disponibles
+		for (Producto aux : listaProductos) {
+			System.out.println(aux.getId() + " - " + aux.getDescripcion() + " - " + aux.getPrecio());
 		}
-		
-	
+
 	}
-	public void mesasdisponibles(){
-		for(Pedido aux:listapedidos)
-		{
-			for(Pedido aux2:listapedidosasignados)
-			{
-			if(aux.getClass()==aux2.getClass())
-			{
-				
-			}else{
-				System.out.println(aux.getnMesa());
+
+	public void mesasdisponibles() {
+		for (Pedido aux : listapedidos) {
+			for (Pedido aux2 : listapedidosasignados) {
+				if (aux.getClass() == aux2.getClass()) {
+
+				} else {
+					System.out.println(aux.getnMesa());
+				}
+
 			}
-				
-				
-				
-			}
-			
-			
+
 		}
-		
+
+	}
+	public void completarPedido(Integer nOrden) throws NumeroOrdenNoEncontrado {
+		Iterator <Pedido> itr= listapedidosasignados.iterator();
+		Boolean idNoEncontrado= true;
+		while(itr.hasNext() && idNoEncontrado) {
+		Pedido aux= itr.next();
+		if(aux.getnOrden()==nOrden) {
+			itr.remove();
+		}else {
+			throw new NumeroOrdenNoEncontrado();
+		}
+		}
+			
+				
+			
 		
 	}
-	
-	
 }
