@@ -19,6 +19,7 @@ public class Main {
 		UnlamResto.listapedidos.add(pedido1);
 		UnlamResto.listapedidos.add(pedido2);
 		UnlamResto.listapedidos.add(pedido3);
+		UnlamResto.listapedidosasignados.add(pedido2);
 		UnlamResto.listaUsuarios.add(test1);
 		UnlamResto.listaAdmins.add(test2);
 		UnlamResto.listaProductos.add(cocacola);
@@ -50,7 +51,19 @@ public class Main {
 				switch (opcionUsuario) {
 				case 1:
 					UnlamResto.mostrarCarta();
-
+					Integer opcionpedido;
+					System.out.println("desea encargar algo?");
+					
+					System.out.println("Seleccione 1 si");
+					System.out.println("Seleccione 0 no");
+					opcionpedido=teclado.nextInt();
+				switch(opcionpedido){
+				case 1:
+				System.out.println("elija un numero de mesa estas estan disponibles:");
+				UnlamResto.mesasdisponibles();
+				
+				
+				}
 					break;
 				case 2:
 					break;

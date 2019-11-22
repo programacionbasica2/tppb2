@@ -82,29 +82,31 @@ public class Restaurante {
 	}
 
 	public void generarnumeropedido(Pedido pedido) {
+//genera numeros de pedido para despues poder brindar una mesa al cliente 
 
 
 		listapedidos.add(pedido);
 
 
 	}
-	public void asignarmesausuario(Pedido ped)
-	{
-		if(resultado==1){
+	public void asignarmesausuario(Integer ped)
+	{//le asigna su mesa para posteriormente
+		//solicitar el pedido
 
 		for(Pedido daux: listapedidos)
 	{
-		if(daux.getnMesa()==ped.getnMesa())
+		if(daux.getnMesa()==ped)
 		{
 			
-			listapedidosasignados.add(ped);//movi lo de generar nro de pedido a este metodo
-			ped.setnOrden(contadorOrdenes);
+			listapedidosasignados.add(daux);//movi lo de generar nro de pedido a este metodo
+			daux.setnOrden(contadorOrdenes);
 			contadorOrdenes++;
 			
 			
-		}}}}
+		}}}
 
 	public void pedirproducto(Producto ped) {
+		//recorre la lista de productos disponible para luego solicitar el producto
 		for (Producto daux : listaProductos) {
 			if (daux.getId() == ped.getId()) {
 				pedidoproductos.add(ped);
@@ -113,8 +115,8 @@ public class Restaurante {
 		}
 	}
 
-	public void mostarHistorialPedidos() {
-		for (Pedido daux : listapedidos) {
+	public void mostarHistorialPedidos() {//muestra los pedidos que fueron procesados
+		for (Pedido daux : listapedidosasignados) {
 			 System.out.println(daux);
 		}
 	}
@@ -144,9 +146,34 @@ public class Restaurante {
 		}
 	}
 	
-	public void mostrarCarta () {
+	public void mostrarCarta () {//muestra la carta de productos disponibles
 		for(Producto aux: listaProductos) {
-			System.out.println(aux.toString());
+			System.out.println(aux.getId()+aux.getDescripcion()+aux.getPrecio());
 		}
+		
+	
 	}
+	public void mesasdisponibles(){
+		for(Pedido aux:listapedidos)
+		{
+			for(Pedido aux2:listapedidosasignados)
+			{
+			if(aux.getClass()==aux2.getClass())
+			{
+				
+			}else{
+				System.out.println(aux.getnMesa());
+			}
+				
+				
+				
+			}
+			
+			
+		}
+		
+		
+	}
+	
+	
 }
