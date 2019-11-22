@@ -2,6 +2,7 @@ package tpprograbasica2;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -49,6 +50,36 @@ public class Restaurante {
 		}
 		return resultado;
 	}
+	
+	public void agregarProducto(String descripcion, Integer id, Double precio) throws IdEnUso {
+		Boolean idDisponible=true;
+		for(Producto daux: listaProductos) {
+			if(id == daux.getId()) {
+				idDisponible=false;
+			}
+		}
+		if(idDisponible) {
+		Producto producto= new Producto (descripcion, id, precio);
+		listaProductos.add(producto);
+		}else {
+			throw new IdEnUso();
+		}
+		
+	}
+	
+	public void eliminarProducto(Integer id)throws IdNoEncontrado {
+		Iterator <Producto> itr= listaProductos.iterator();
+		Boolean idLibre= true;
+		while(itr.hasNext() && idLibre) {
+		Producto aux=itr.next();
+			if(id==aux.getId()) {
+				listaProductos.remove(aux);
+				idLibre=false;
+			}else {
+				throw new IdNoEncontrado();
+			}
+		}
+	}
 
 	public void generarnumeropedido(Pedido pedido) {
 
@@ -84,7 +115,7 @@ public class Restaurante {
 
 	public void mostarHistorialPedidos() {
 		for (Pedido daux : listapedidos) {
-			daux.toString();
+			 System.out.println(daux);
 		}
 	}
 
@@ -110,6 +141,12 @@ public class Restaurante {
 			throw new NoHayProductosPedidos();
 		} else {
 			return sumatoriaTarjeta;
+		}
+	}
+	
+	public void mostrarCarta () {
+		for(Producto aux: listaProductos) {
+			System.out.println(aux.toString());
 		}
 	}
 }

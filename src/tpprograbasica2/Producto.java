@@ -2,10 +2,10 @@ package tpprograbasica2;
 
 public class Producto {
 private String descripcion;
-private Integer precio;
+private Double precio;
 private Integer id;
 
-public Producto( String descripcion,Integer id, Integer precio)
+public Producto( String descripcion,Integer id, Double precio)
 
 
 	{	this.descripcion=descripcion;
@@ -23,11 +23,11 @@ public void setDescripcion(String descripcion) {
 	this.descripcion = descripcion;
 }
 
-public Integer getPrecio() {
+public Double getPrecio() {
 	return precio;
 }
 
-public void setPrecio(Integer precio) {
+public void setPrecio(Double precio) {
 	this.precio = precio;
 }
 
