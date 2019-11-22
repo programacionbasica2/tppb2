@@ -11,8 +11,9 @@ public class Restaurante {
 	HashSet<Usuario> listaUsuarios = new HashSet<Usuario>();
 	HashSet<Admin> listaAdmins = new HashSet<Admin>();
 	Set<Pedido> listapedidos = new TreeSet<Pedido>();
-	Set<Pedido> listadepedidosasignados = new TreeSet<Pedido>();
-	private int contadorOrdenes = 0;
+	Set<Pedido> listapedidosasignados = new TreeSet<Pedido>();
+	private Integer contadorOrdenes = 0;
+	private Integer resultado;
 
 	public Boolean registroUsuario(String nombre, String apellido, String mail, String contrasena) throws Exception {
 
@@ -32,7 +33,7 @@ public class Restaurante {
 	}
 
 	public Integer ingresarAlSistema(String mail, String contrasena) throws DatosInvalidos {
-		Integer resultado = -1;
+		 resultado = -1;
 		for (Usuario daux : listaUsuarios) {
 			if (daux.getMail().equals(mail) && daux.getContrasena().equals(contrasena)) {
 				resultado = 1;
@@ -51,11 +52,26 @@ public class Restaurante {
 
 	public void generarnumeropedido(Pedido pedido) {
 
-		pedido.setnOrden(contadorOrdenes);
+
 		listapedidos.add(pedido);
-		contadorOrdenes++;
+
 
 	}
+	public void asignarmesausuario(Pedido ped)
+	{
+		if(resultado==1){
+
+		for(Pedido daux: listapedidos)
+	{
+		if(daux.getnMesa()==ped.getnMesa())
+		{
+			
+			listapedidosasignados.add(ped);//movi lo de generar nro de pedido a este metodo
+			ped.setnOrden(contadorOrdenes);
+			contadorOrdenes++;
+			
+			
+		}}}}
 
 	public void pedirproducto(Producto ped) {
 		for (Producto daux : listaProductos) {
