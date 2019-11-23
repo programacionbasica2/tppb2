@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) throws IdEnUso {
+	public static void main(String[] args) throws IdEnUso, NoHayProductosPedidos {
 		// TODO Auto-generated method stub
 		Restaurante UnlamResto = new Restaurante();
 		Usuario test1 = new Usuario("Juan", "Rugna", "juanrugna@hotmail.com", "asd");
@@ -73,10 +73,25 @@ public class Main {
 				System.out.println("seleccione el numero de producto que quieracomprar");
 				Integer nprod;
 				nprod=teclado.nextInt();
-				UnlamResto.mostrarproductopedido(nprod);
+		
+				Boolean a= UnlamResto.mostrarproductopedido(nprod);
+				if(a==true)
+				{Double var1=UnlamResto.getVariableauxiliar();
+					String var2=UnlamResto.getVariableauxiliar2();
+				
+					
+					
+				}
 				System.out.println("seleccione su metodo de pago");
 				System.out.println("1-efectivo");
 				System.out.println("2-tarjeta");
+				Integer mp;
+				
+				mp=teclado.nextInt();
+				if(mp==1)
+				{System.out.println(UnlamResto.pagarConEfectivo());}
+				if(mp==2)
+				{System.out.println(UnlamResto.pagarConTarjeta());}
 				
 				
 			

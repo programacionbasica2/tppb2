@@ -15,6 +15,8 @@ public class Restaurante {
 	Set<Pedido> listapedidosasignados = new TreeSet<Pedido>();
 	private Integer contadorOrdenes = 0;
 	private Integer resultado;
+	private Double variableauxiliar;
+	private String variableauxiliar2;
 
 	public Boolean registroUsuario(String nombre, String apellido, String mail, String contrasena) throws Exception {
 
@@ -146,15 +148,16 @@ public class Restaurante {
 	}
 
 	
-	public void mostrarproductopedido(Integer ped) {// muestra la carta de productos disponibles
+	public Boolean mostrarproductopedido(Integer ped) {// muestra la carta de productos disponibles
 		for (Producto aux : listaProductos){
 			if(aux.getId()==ped)
 			{
 				System.out.println("Usted encargo"+aux.getDescripcion());
-				
-				
+				variableauxiliar=aux.getPrecio();
+				variableauxiliar2=aux.getDescripcion();
+			return true;
 			}
-			}
+			}return false;
 		}
 	
 	public void mostrarCarta() {// muestra la carta de productos disponibles
@@ -195,4 +198,22 @@ public class Restaurante {
 			
 		
 	}
+
+	public Double getVariableauxiliar() {
+		return variableauxiliar;
+	}
+
+	public void setVariableauxiliar(Double variableauxiliar) {
+		this.variableauxiliar = variableauxiliar;
+	}
+
+	public String getVariableauxiliar2() {
+		return variableauxiliar2;
+	}
+
+	public void setVariableauxiliar2(String variableauxiliar2) {
+		this.variableauxiliar2 = variableauxiliar2;
+	}
+	
+	
 }
