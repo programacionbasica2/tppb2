@@ -101,6 +101,7 @@ public class Restaurante {
 
 			}
 		}
+		
 	}
 
 	public void pedirproducto(Producto ped) {
@@ -144,6 +145,18 @@ public class Restaurante {
 		}
 	}
 
+	
+	public void mostrarproductopedido(Integer ped) {// muestra la carta de productos disponibles
+		for (Producto aux : listaProductos){
+			if(aux.getId()==ped)
+			{
+				System.out.println("Usted encargo"+aux.getDescripcion());
+				
+				
+			}
+			}
+		}
+	
 	public void mostrarCarta() {// muestra la carta de productos disponibles
 		for (Producto aux : listaProductos) {
 			System.out.println(aux.getId() + " - " + aux.getDescripcion() + " - " + aux.getPrecio());
@@ -153,12 +166,13 @@ public class Restaurante {
 
 	public void mesasdisponibles() {
 		for (Pedido aux : listapedidos) {
+		
 			for (Pedido aux2 : listapedidosasignados) {
-				if (aux.getClass() == aux2.getClass()) {
-
-				} else {
-					System.out.println(aux.getnMesa());
-				}
+				if (aux.getnOrden() != aux2.getnOrden()) {
+				System.out.println(aux.getnMesa());
+				} 
+				
+				
 
 			}
 

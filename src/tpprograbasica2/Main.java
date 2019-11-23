@@ -59,13 +59,34 @@ public class Main {
 					System.out.println("Seleccione 1 si");
 					System.out.println("Seleccione 0 no");
 					opcionpedido=teclado.nextInt();
-				switch(opcionpedido){
-				case 1:
+			if(opcionpedido==1){
 				System.out.println("elija un numero de mesa estas estan disponibles:");
-				UnlamResto.mesasdisponibles();
+						UnlamResto.mesasdisponibles();
+				
+				Integer mesapedida;
+				mesapedida=teclado.nextInt();
+				UnlamResto.asignarmesausuario(mesapedida);
 				
 				
-				}
+				
+				
+				System.out.println("seleccione el numero de producto que quieracomprar");
+				Integer nprod;
+				nprod=teclado.nextInt();
+				UnlamResto.mostrarproductopedido(nprod);
+				System.out.println("seleccione su metodo de pago");
+				System.out.println("1-efectivo");
+				System.out.println("2-tarjeta");
+				
+				
+			
+				
+				
+				
+				
+			}
+				
+				
 					break;
 				case 2:
 					break;
